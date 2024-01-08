@@ -1,0 +1,80 @@
+<mat-toolbar class="toolbar">
+  <span>Carteira de Clientes</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<div class="main-body">
+
+  <div class="cabecalho">
+    <mat-form-field>
+      <mat-label>Pesquisar</mat-label>
+      <input matInput (keyup)="pesquisar($event)" #input>
+    </mat-form-field>
+    <button class="botao-adicionar" (click)="adicionarCliente()">
+      Cadastrar Cliente
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Colunas -->
+      <ng-container matColumnDef="id">
+        <th class="label-titulo __titulo-id" *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.id}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="nome">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> Nome</th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.nome}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sobrenome">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> Sobrenome </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.sobrenome}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cpf">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.cpf}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataNascimento">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> Data Nascimento </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rendaMensal">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> Renda Mensal </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.rendaMensal}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataCadastro">
+        <th class="label-titulo" mat-header-cell *matHeaderCellDef mat-sort-header> Data Cadastro </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo"> {{row.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acao">
+        <th class="label-titulo __titulo-acao" mat-header-cell *matHeaderCellDef mat-sort-header> Ação </th>
+        <td mat-cell *matCellDef="let row" class="label-conteudo">
+          <button mat-icon-button color="primary" (click)="editarCliente(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="excluirCliente(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Tabela vazia ou registro não encontrado -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="12"> {{input.value.length === 0 ? 'Nenhum cliente cadastrado!' : 'Nenhum registro encontrado!' }}</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Itens por página"></mat-paginator>
+  </div>
+</div>

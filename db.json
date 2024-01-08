@@ -1,0 +1,81 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "nome": "Maria",
+      "sobrenome": "Silva",
+      "dataNascimento": "2000-01-08T02:00:00.000Z",
+      "rendaMensal": "R$10.000,01",
+      "email": "maria@gmail.com",
+      "cpf": "176.873.400-35",
+      "dataCadastro": "2024-01-08T02:42:12.677Z",
+      "id": 1
+    },
+    {
+      "nome": "João",
+      "sobrenome": "Souza",
+      "dataNascimento": "2000-01-03T02:00:00.000Z",
+      "rendaMensal": "R$2.123,12",
+      "email": "joao@gmail.com",
+      "cpf": "733.178.050-64",
+      "dataCadastro": "2024-01-08T03:05:58.370Z",
+      "id": 2
+    },
+    {
+      "nome": "Teste2",
+      "sobrenome": "Two",
+      "dataNascimento": "2001-02-21T03:00:00.000Z",
+      "rendaMensal": "R$2.000,00",
+      "email": "alface@gmail.com",
+      "cpf": "133.341.730-62",
+      "dataCadastro": "2024-01-08T03:07:41.929Z",
+      "id": 3
+    },
+    {
+      "nome": "Teste",
+      "sobrenome": "One",
+      "cpf": "032.411.860-08",
+      "dataNascimento": "1991-01-09T02:00:00.000Z",
+      "rendaMensal": "R$11.111",
+      "email": "teste@gmail.com",
+      "dataCadastro": "2024-01-08T03:09:35.396Z",
+      "id": 4
+    },
+    {
+      "nome": "Teste3",
+      "sobrenome": " three",
+      "cpf": "520.347.640-30",
+      "dataNascimento": "2003-12-08T02:00:00.000Z",
+      "rendaMensal": "R$123.123",
+      "email": "teste3@gmail.com",
+      "dataCadastro": "2024-01-08T03:10:34.498Z",
+      "id": 5
+    },
+    {
+      "nome": "google",
+      "sobrenome": "pesquisa",
+      "cpf": "218.856.690-46",
+      "dataNascimento": "1993-06-01T03:00:00.000Z",
+      "rendaMensal": "R$22.222",
+      "email": "google@gmail.com",
+      "dataCadastro": "2024-01-08T03:12:19.915Z",
+      "id": 6
+    }
+  ]
+}

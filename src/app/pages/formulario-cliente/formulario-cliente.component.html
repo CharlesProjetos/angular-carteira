@@ -1,0 +1,83 @@
+<div mat-dialog-title class="title">
+    <h1>Dados do Cliente</h1>
+</div>
+<form [formGroup]="formularioCliente" (ngSubmit)="submeterFormulario()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" placeholder="Ex. Paulo" formControlName="nome">
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('nome')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Sobrenome</mat-label>
+                <input matInput placeholder="Ex. Silva" formControlName="sobrenome">
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('sobrenome')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>CPF</mat-label>
+                <input matInput type="text" mask="000.000.000-00" formControlName="cpf">
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('cpf')?.hasError('cpfInvalido')">
+                    CPF inválido!
+                </mat-error>
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('cpf')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Data Nascimento</mat-label>
+                <input matInput [matDatepicker]="pickerNascimento" placeholder="Selecione uma data" readonly="true" formControlName="dataNascimento">
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('dataNascimento')?.value != null && 
+                !formularioCliente.get('dataNascimento')?.hasError('idadeInvalida') && !formularioCliente.get('dataNascimento')?.hasError('required')">
+                    Cliente deve possuir entre 18 e 60 anos!
+                  </mat-error>
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('dataNascimento')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerNascimento"></mat-datepicker-toggle>
+                <mat-datepicker #pickerNascimento></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Renda Mensal</mat-label>
+                <input matInput type="text" mask="separator.2" thousandSeparator="." decimalSeparator="," 
+                prefix="R$" formControlName="rendaMensal" />
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('rendaMensal')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email"  email="true">
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('email')?.hasError('required')">
+                    Campo obrigatório!
+                </mat-error>
+                <mat-error class="label-erro" *ngIf="formularioCliente.get('email')?.hasError('email')">
+                    Email inválido!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Data Cadastro</mat-label>
+                <input matInput [matDatepicker]="pickerCadastro" placeholder="DD/MM/AAAA" formControlName="dataCadastro">
+                <mat-datepicker-toggle matIconSuffix [for]="pickerCadastro"></mat-datepicker-toggle>
+                <mat-datepicker #pickerCadastro></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="primary" class="botao-salvar" type="submit">{{data ? 'Atualizar': 'Salvar'}}</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancelar</button>
+    </div>
+</form>

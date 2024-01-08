@@ -1,0 +1,48 @@
+.content {
+  padding-top: 10px;
+  font-family: "Montserrat";
+}
+.row {
+  display: flex;
+  gap: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.action {
+  padding: 0px 25px 20px;
+  button {
+    flex: 1;
+  }
+}
+
+.label-erro {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+}
+
+.botao-salvar{
+  background: var(--Financeira-Financiamento-Primary-dark, #0A4A5B) !important;
+}
+
+:host ::ng-deep h1, button{
+  font-family: "Montserrat";
+}
+
+:host ::ng-deep [class*="mat-mdc-form-field-error-wrapper"] {
+  padding: 0px;
+}
+
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+  font-family: "Montserrat";
+}
+
+.title{
+  background: var(--Financeira-Financiamento-Primary-darkest, #002C37);
+  color: #F5F5F5;
+  font-family: 'Montserrat';
+  text-align: center;
+}
